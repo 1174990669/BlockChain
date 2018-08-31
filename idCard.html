@@ -1,0 +1,127 @@
+{extend name="templet/public" /}
+{block name="title"}{$title}{/block}
+{block name="css"}{/block}
+{block name="js"}{/block}
+{block name="content"}
+<style>
+    body{background: white;}
+</style>
+<body>
+<div class="m_wap ">
+<ul class='ul_cols ul_li_33'>
+  <li class="selected"><a href="{:url('index/user/idCard')}">实名认证</a></li>
+  <li><a href="{:url('index/user/bank')}">绑定银行卡</a></li>
+  <li><a href="{:url('index/user/tixian')}">提现</a></li>
+  <div class="clear"></div>
+</ul>
+<div class="hmsg">
+  <ul style="height: auto;">
+      <li class="tx_title">重要提示：</li>
+      <li>1. 请准确填写认证信息，姓名、身份证号、银行卡号必须是同一人。</li>
+      <li>2. 每人仅限一次认证机会，若认证失败请拍个手持身份证相片发给通宝汇客服人工审核。</li>
+  </ul>
+</div>
+<div style="background: white;">
+{if condition="empty($member['realname'])"}
+<form name="form1" method="post" action="{:url('/index/user/idCard')}" id="form1" onsubmit="return idCards($(this))">
+<input name="url" value="{:url('/index/user/idCard')}" type="hidden">
+  <table id="Table1" border="0" cellspacing="0" cellpadding="0" class="table_edit">
+    <tr>
+      <th>手机号码：</th>
+      <td>{:$member['mobile']}</td>
+    </tr>
+    <tr>
+      <th>真实姓名：</th>
+      <td>
+        <input name="realname" type="text" id="TFullName" placeholder="真实姓名" title="0|0|真实姓名" class="txt_1" />
+      </td>
+    </tr>
+  	<tr>
+  		<th>身份证号：</th>
+  		<td>
+          <input name="idCard" type="text" id="TCardNums" placeholder="身份证号" title="0|0|身份证号" class="txt_1" />
+      </td>
+  	</tr>
+	  <tr>
+  		<td colspan="2">
+        <div id="DivMessAge"></div>
+      </td>
+  	</tr>
+  	<tr>
+  		<td colspan="2">
+        <input type="submit" name="ButtonPost" value="确定提交" class="but_anhui" />
+      </td>
+	  </tr>
+  </table>
+              </form>
+              <script>
+                  function idCards(form){
+                      if($('input[name="realname"]').val().length>6){
+                          $('#DivMessAge').show();
+                          $('#DivMessAge').html('真实姓名格式不正确');
+                          return false
+                      }
+                      if($('input[name="realname"]').val()==''){
+                          $('#DivMessAge').show();
+                          $('#DivMessAge').html('请输入您的真实姓名');
+                          return false
+                      }
+                      var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                      if(reg.test($('input[name="idCard"]').val()) === false)
+                      {
+                          $('#DivMessAge').show();
+                          $('#DivMessAge').html('身份证号码格式不正确');
+                          return false
+                      }
+                      $.ajax({
+                          url:$('input[name="url"]').val(),
+                          type:'POST', //GET
+                          async:true,    //或false,是否异步
+                          data:form.serialize(),
+                          timeout:5000,    //超时时间
+                          dataType:'json',    //返回的数据格式：json/xml/html/script/jsonp/text
+                          success:function(data){
+                              if(data.state){
+                                  $('#DivMessAge').show();
+                                  $('#DivMessAge').html(data.msg);
+                              }else{
+                                  $('#DivMessAge').show();
+                                  $('#DivMessAge').html(data.msg);
+                              }
+
+                          },
+                      })
+                      return false;
+                  }
+              </script>
+{else /}
+  <table id="Table2" border="0" cellspacing="0" cellpadding="0" class="table_edit" style="display:;">
+  	<tr>
+  		<th>手机号码：</th>
+  		<td>{:$member['mobile']}   </td>
+  	</tr>
+  	<tr>
+  		<th>认证类型：</th>
+  		<td>身份证   </td>
+  	</tr>
+  	<tr>
+  		<th>真实姓名：</th>
+  		<td> {:$member['realname']} </td>
+  	</tr>
+  	<tr>
+  		<th>身份证号：</th>
+  		<td> {:substr_replace($member['idCard'],'****************',4)} </td>
+  	</tr>
+  </table>
+{/if}
+</div>
+<script type="text/javascript">
+  function PostRenZheng() 
+  {
+    ClickConfirm("请准确核对您的认证信息？每人只有一次自动认证机会，认证失败后只能拍手持身份证相片发给通宝汇客服人工审核", "Button1");
+  }
+ </script>
+</div>
+{/block}
+</body>
+</html>

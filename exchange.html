@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="format-detection" content="telephone=on"/>
+    <title>兑换种子</title>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/weui.min.js"></script>
+    <script src="js/public.js"></script>
+</head>
+<body>
+<div class="page__bd page__bd_spacing">
+    <div class="page_nav clear">
+        <div class="page_nav_fl fl ">
+            <a href="user.html"><img src="img/iconfont-jiantou-(6).png" alt=""></a>
+        </div>
+        <div class="page_nav_cen fl">
+            <!--<div class=" textCen page_nav_cen-text">-->
+            兑换种子
+            <!--</div>-->
+        </div>
+        <div class="page_nav_fl fr  ">
+
+        </div>
+    </div>
+</div>
+<div class="lin_index">
+
+    <div class="lin_index_title clear">
+        <div class="fl lin_i_num">
+
+            <span>种子钱包(CJC)</span>
+        </div>
+        <div class="fr lin_i_num">
+            <span>数量：<em class="colff3600">58000</em>份</span>
+        </div>
+    </div>
+    <div class="lin_index_title clear">
+        <div class="fl lin_i_num">
+            <span>种子钱包(CJC)</span>
+
+        </div>
+        <div class="fr lin_i_num">
+            <span>数量：<em class="colff3600">58000</em>份</span>
+        </div>
+    </div>
+    <div class="lin_index_title clear">
+        <div class="fl lin_i_num">
+            <span>种子钱包(CJC)</span>
+        </div>
+        <div class="fr lin_i_num">
+            <span>数量：<em class="colff3600">58000</em>份</span>
+        </div>
+    </div>
+</div>
+
+<form method="" action="" onsubmit="return sell()">
+    <div class="lin_index lin_sell_con">
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">兑换数量 :</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" name="price" min="100" placeholder="请输入兑换数量">
+            </div>
+            <div class="oneself-chakan" id="chakan">计算当前汇率</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">资金密码 :</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="password" name="sellpwd" min="100" placeholder="请输入资金密码">
+            </div>
+        </div>
+    </div>
+    <button type="submit" style="margin-bottom: 0.9rem;margin-top: 0.7rem" class="caiBtn">出售</button>
+</form>
+<div id="dialogs">
+    <div class="js_dialog" id="iosDialog2" style="  display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+
+    $('#dialogs').on('click', '.weui-dialog__btn', function () {
+        $(this).parents('.js_dialog').fadeOut(200);
+    });
+
+    var $iosDialog2 = $('#iosDialog2')
+    function sell() {
+        var sellPirce = $("input[name=price]").val();
+        var sellpwd = $("input[name=sellpwd]").val();
+        if (sellPirce == "" || sellPirce == null) {
+            $iosDialog2.fadeIn(200);
+            $iosDialog2.find(".weui-dialog__bd").text("请输入兑换数量");
+            return false;
+        }
+        if (sellpwd == "" || sellpwd == null) {
+            $iosDialog2.fadeIn(200);
+            $iosDialog2.find(".weui-dialog__bd").text("请输入资金密码");
+            return false;
+        }
+    }
+
+    $("#chakan").click(function () {  //计算当前汇率
+        var mos = $("input[name=mos]").val(); //获取用户输入亩数
+        $("#off").val("0"); //开关
+
+
+
+        $("#price").text("100");//计算后的价格
+        $("#oneselfPrice").text("100");//计算后的价格
+        $("#huil").text("100")//当前汇率
+        $("#zhengs").text("100")//赠送
+
+
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="format-detection" content="telephone=on"/>
+    <title>交易记录</title>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/weui.min.js"></script>
+    <script src="js/public.js"></script>
+</head>
+<body>
+<div class="page__bd page__bd_spacing qianbao_zs_title_bg">
+    <div class="page_nav clear">
+        <div class="page_nav_fl fl ">
+            <a href="qianbao.html"><img src="img/iconfont-jiantou-(6).png" alt=""></a>
+        </div>
+        <div class="page_nav_cen fl">
+            <!--<div class=" textCen page_nav_cen-text">-->
+            交易记录
+            <!--</div>-->
+        </div>
+        <div class="page_nav_fl fr  ">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="xq-data">
+    <div class="clear xq-data-table">
+        <div class="xq-data-table-td"><span>时间</span></div>
+        <div class="xq-data-table-td"><span>操作</span></div>
+        <div class="xq-data-table-td"><span>资产变化</span></div>
+    </div>
+    <div id="data-table-scroll">
+        <div class="clear xq-data-table">
+            <div class="xq-data-table-td"><span>2018/05/16</span></div>
+            <div class="xq-data-table-td"><span>兑换种子</span></div>
+            <div class="xq-data-table-td"><span class="colff9000">-8720</span></div>
+        </div>
+        <div class="clear xq-data-table">
+            <div class="xq-data-table-td"><span>2018/05/16</span></div>
+            <div class="xq-data-table-td"><span>购买林权</span></div>
+            <div class="xq-data-table-td"><span class="colff9000">-8720 </span></div>
+        </div>
+        <div class="clear xq-data-table">
+            <div class="xq-data-table-td"><span>2018/05/16</span></div>
+            <div class="xq-data-table-td"><span>兑换种子</span></div>
+            <div class="xq-data-table-td"><span class="col46ac1a">+9000</span></div>
+        </div>
+        <div class="clear xq-data-table">
+            <div class="xq-data-table-td"><span>2018/05/16</span></div>
+            <div class="xq-data-table-td"><span>兑换种子</span></div>
+            <div class="xq-data-table-td"><span class="colff9000">-8720 </span></div>
+        </div>
+        <div class="clear xq-data-table">
+            <div class="xq-data-table-td"><span>2018/05/16</span></div>
+            <div class="xq-data-table-td"><span>兑换种子</span></div>
+            <div class="xq-data-table-td"><span class="col46ac1a">+9000</span></div>
+        </div>
+    </div>
+</div>
+<script>
+    var page = 1,  isloading = true;
+    $(window).scroll(function () {
+        var scrollTop = $(window).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (scrollTop + windowHeight >= (scrollHeight - 50)) {
+            if (isloading) {
+                ck();
+            }
+        }
+    });
+
+    ck();
+    function ck() {
+        $.ajax({
+            url: "/index.php/Home/Index/ajax_jn_list",
+            type: "post",
+            beforeSend: function () {
+                //$("#da").text("加载中...");
+            },
+            data: {page: page, div_type: div_type, city: city},
+            success: function (re) {
+                var str;
+                if (re.code == 200) {
+                    for (var i = 0; i < re.data.length; i++) {
+                        str = '<div class="clear xq-data-table">' +
+                            '<div class="xq-data-table-td">' +
+                            '<span>2018/05/16</span>' +
+                            '</div>' +
+                            ' <div class="xq-data-table-td">' +
+                            '<span>兑换种子</span>' +
+                            '</div> ' +
+                            '<div class="xq-data-table-td">' +
+                            '<span class="colff9000">-8720 </span>' +
+                            '</div> ' +
+                            '</div>';
+                        $("#data-table-scroll").append(str);
+                    }
+                    page = page + 1;
+                } else {
+                    isloading = false;
+                }
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="format-detection" content="telephone=on"/>
+    <title>林权详情</title>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/weui.min.js"></script>
+    <script src="js/public.js"></script>
+</head>
+<body>
+<div class="page__bd page__bd_spacing">
+    <div class="page_nav clear">
+        <div class="page_nav_fl fl ">
+            <a href="user.html"><img src="img/iconfont-jiantou-(6).png" alt=""></a>
+        </div>
+        <div class="page_nav_cen fl">
+            <!--<div class=" textCen page_nav_cen-text">-->
+            林权详情
+            <!--</div>-->
+        </div>
+        <div class="page_nav_fl fr  ">
+            <!--<a href="">购买林权</a>-->
+        </div>
+    </div>
+</div>
+<div class="xq-con_index">
+    <div class="xq-con-title clear">
+        <div class="fl">应付金额</div>
+        <div class="fr colff9000">￥4950</div>
+    </div>
+    <div class="clear">
+        <div class="xq-con_index-p clear">
+            <span class="xq-con_index-p_span">付款方式：</span>
+            <span class=xq-con_index-p_niu>现金存款   </span>
+        </div>
+        <div class="xq-con_index-p clear">
+            <span class="xq-con_index-p_span">订单时间：</span>
+            <span class=xq-con_index-p_niu>2018/05/08 15:32:00</span>
+        </div>
+        <div class="xq-con_index-p clear">
+            <span class="xq-con_index-p_span"> 林权数量：</span>
+            <span class=xq-con_index-p_niu>0.3亩 </span>
+        </div>
+        <div class="xq-con_index-p clear">
+            <span class="xq-con_index-p_span">收款人：</span>
+            <span class=xq-con_index-p_niu>漆*明</span>
+        </div>
+        <div class="xq-con_index-p clear">
+            <span class="xq-con_index-p_span">银行信息：</span>
+            <span class=xq-con_index-p_niu> 6225 1874 5841 5495 1548</span>
+        </div>
+        <div class="xq-con_index-p clear">
+            <span class="xq-con_index-p_span">当前状态：</span>
+            <span class=xq-con_index-p_niu><span class="colff9000">未支付</span></span>
+        </div>
+    </div>
+</div>
+<form action="">
+    <div class="linquan_upload">
+        <!-- 只有未付款才显示 -->
+        <input type="file" name="file_upload" id="file_upload">
+        <img src="" id='upload_img' alt="" style="display: none;">
+    </div>
+    <div class="linquan_tishi">
+        <p class="colff3600">温馨提示：转账成功后需上传截图凭证 </p>
+        <p class="colff3600">客服电话：400-1234-5678</p>
+        <a href="" class="cole228feb">（不会操作？点击查看操作教程）</a>
+    </div>
+
+    <!-- 只有未付款才显示 -->
+    <div class="weui-tab">
+        <div class="weui-tab__panel"></div>
+        <div class="linquanfixed-btn">
+            <button type="submit" class="linquanfixed-btn-tj fr">付款成功</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" class="uploader js_show">
+    $(function () {
+        var $uploaderInput = $("#file_upload"),
+            $uploaderFiles = $("#upload_img");
+        $uploaderInput.on("change", function (e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+                $uploaderFiles.attr("src", src).show();
+
+            }
+        });
+
+    });
+
+</script>
+</body>
+</html>

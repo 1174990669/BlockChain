@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="format-detection" content="telephone=on"/>
+    <title>购买林权</title>
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/weui.min.js"></script>
+    <script src="js/public.js"></script>
+</head>
+<body>
+<div class="page__bd page__bd_spacing">
+    <div class="page_nav clear">
+        <div class="page_nav_fl fl ">
+            <a href="user.html"><img src="img/iconfont-jiantou-(6).png" alt=""></a>
+        </div>
+        <div class="page_nav_cen fl">
+            <!--<div class=" textCen page_nav_cen-text">-->
+            购买林权
+            <!--</div>-->
+        </div>
+        <div class="page_nav_fl fr  ">
+
+        </div>
+    </div>
+</div>
+<div class="oneself-con">
+    <div class="oneself-con-title">购买林权</div>
+    <div class="oneself-con-price">
+        <!--<ul class="recharge-ul clear">
+            <li class="act" data-price="2970" data-hl="1.1" data-zs="234">
+                <a href="javascript:;">
+                    <p class="recharge-nub">0.3亩 </p>
+                    <p class="recharge-read">2970元</p>
+                </a>
+            </li>
+            <li class="" data-price="4950" data-hl="1.2" data-zs="235">
+                <a href="javascript:;">
+                    <p class="recharge-nub">0.5亩</p>
+                    <p class="recharge-read">4950元</p>
+                </a>
+            </li>
+            <li class="" data-price="9999" data-hl="1.3" data-zs="236">
+                <a href="javascript:;">
+                    <p class="recharge-nub">1亩 </p>
+                    <p class="recharge-read">9999元</p>
+                </a>
+            </li>
+            <li class="" data-price="19800" data-hl="1.4" data-zs="237">
+                <a href="javascript:;">
+                    <p class="recharge-nub">2亩</p>
+                    <p class="recharge-read">19800元</p>
+                </a>
+            </li>
+            <li class="" data-price="29700" data-hl="1.5" data-zs="238">
+                <a href="javascript:;">
+                    <p class="recharge-nub">3亩 </p>
+                    <p class="recharge-read">29700元</p>
+                </a>
+            </li>
+            <li class="" data-price="49500" data-hl="1.6" data-zs="239">
+                <a href="javascript:;">
+                    <p class="recharge-nub">5亩</p>
+                    <p class="recharge-read">49500元</p>
+                </a>
+            </li>
+        </ul>-->
+        <div class="lin-price">当前汇率：<span class="col46ac1a" id="huil">1.20</span>&nbsp;&nbsp;&nbsp;&nbsp;赠送 <span
+                class="col46ac1a" id="zhengs">1980</span> 碳金汇
+        </div>
+
+    </div>
+
+</div>
+<form action="" method="post" onsubmit="return totalpricess()">
+
+    <div class="lin_index lin_sell_con">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">购买亩数 :</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="text"  name="mos" id="mos"  placeholder="请输入购买亩数">
+            </div>
+            <div class="oneself-chakan" id="chakan">计算当前汇率</div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">资金密码 :</label></div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number"  name="pwad" min="100" placeholder="请输入资金密码">
+            </div>
+        </div>
+        <input type="hidden" name="off" id="off">
+
+        <!-- 当前的价格 -->
+        <input type="hidden" name="oneself-price" id="oneselfPrice">
+        <div class="weui-cell">
+            <div class="oneself-con-price-total">应付金额：<span class="colff9000" id="price">2970</span>元</div>
+        </div>
+
+    </div>
+
+
+    <!--<div class="oneself-con">
+        <div class="oneself-con-title">支付凭证</div>
+        <div class="  weui-cells_checkbox">
+            <label style="padding: 10px 0;" class="weui-cell weui-check__label" for="x11">
+                <div class="weui-cell__bd">
+                    <p>
+                        <img src="img/pay_1.png" style="width: 30px;vertical-align: middle;margin-right: 0.2rem" alt="">
+                        <span>在线支付</span></p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" name="radio1" class="weui-check" id="x11" value="0" checked="checked">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+            <label style="padding: 10px 0;" class="weui-cell weui-check__label" for="x12">
+                <div class="weui-cell__bd">
+                    <p>
+                        <img src="img/pay_2.png" style="width: 30px;vertical-align: middle;margin-right: 0.2rem" alt="">
+                        <span>支付宝</span></p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" name="radio1" checked="checked" class="weui-check" id="x12" value="1">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+            <label style="padding: 10px 0;" class="weui-cell weui-check__label" for="x13">
+                <div class="weui-cell__bd">
+                    <p>
+                        <img src="img/pay_3.png" style="width: 30px;vertical-align: middle;margin-right: 0.2rem" alt="">
+                        <span>微信支付</span></p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" name="radio1" class="weui-check" id="x13" value="2">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+
+            <input type="hidden" name="totalprice" id="totalprice" value="2970">
+            <div class="linquan_upload">
+                &lt;!&ndash; 只有未付款才显示 &ndash;&gt;
+                <input type="file" name="file_upload" id="file_upload">
+                <img src="" id="upload_img" alt="" style="display: none;">
+            </div>
+        </div>
+    </div>-->
+    <button type="submit" style="margin-bottom: 0.9rem;margin-top: 0.7rem" class="caiBtn">立即充值</button>
+</form>
+<div class="index-model" style=" ">
+    <div class="index-model-con">
+        <img src="img/succeed.png" style="display: block;margin:1rem  auto 0.4rem" alt="">
+        <div class="index-model-con-title">充值成功</div>
+        <div class="clear">
+            <a href="javascript:;" class="index-model-con-link index-model-con-link-confirm">确定</a>
+        </div>
+    </div>
+</div>
+<div id="dialogs">
+    <div class="js_dialog" id="iosDialog2" style="  display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function () {
+        $('#dialogs').on('click', '.weui-dialog__btn', function () {
+            $(this).parents('.js_dialog').fadeOut(200);
+        });
+    });
+    var $iosDialog2 = $('#iosDialog2')
+    $(function () {
+        $(".recharge-ul li").click(function () {
+            $(this).addClass("act").siblings("li").removeClass("act")
+            var recPrice = $.trim($(this).attr("data-price"));
+            $("#price").text(recPrice)
+            $("#totalprice").val(recPrice)
+            var lh = $(this).attr("data-hl")
+            var zs = $(this).attr("data-zs")
+            $("#huil").text(lh)
+            $("#zhengs").text(zs)
+        })
+    })
+
+    //    $(".caiBtn").click(function () {  //点击充值
+    //        var zhifu = $("input[name=radio1]:checked").val();
+    //        var price = $("#price").text();
+    //        $(".index-model").show();
+    //    })
+    $(".index-model-con-link-confirm").click(function () {
+        $(".index-model").hide();
+    })
+
+</script>
+<script type="text/javascript" class="uploader js_show">
+    $(function () {
+        var $uploaderInput = $("#file_upload"),
+            $uploaderFiles = $("#upload_img");
+        $uploaderInput.on("change", function (e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+                $uploaderFiles.attr("src", src).show();
+
+            }
+        });
+
+    });
+
+
+    $("#chakan").click(function () {  //计算当前汇率
+        var mos = $("input[name=mos]").val(); //获取用户输入亩数
+        $("#off").val("0"); //开关
+
+        $("#price").text("100");//计算后的价格
+        $("#oneselfPrice").text("100");//计算后的价格
+        $("#huil").text("100")//当前汇率
+        $("#zhengs").text("100")//赠送
+
+
+
+    })
+    $("#mos").focus(function () {
+        $("#off").val(""); //开关
+    })
+    function totalpricess() {
+
+        var file_upload = $("#file_upload").val();
+        var mos = $("input[name=mos]").val();
+        var pwad = $("input[name=pwad]").val();
+        var off = $("#off").val();
+        if (off == "" || off == null) {
+            $iosDialog2.fadeIn(200);
+            $iosDialog2.find(".weui-dialog__bd").text("请先计算当前汇率，查看价格");
+            return false;
+        }
+        if (mos == "" || mos == null) {
+            $iosDialog2.fadeIn(200);
+            $iosDialog2.find(".weui-dialog__bd").text("请输入亩数");
+            return false;
+        }
+        if (pwad == "" || pwad == null) {
+            $iosDialog2.fadeIn(200);
+            $iosDialog2.find(".weui-dialog__bd").text("请输入资金密码");
+            return false;
+        }
+        var zhifu = $("input[name=radio1]:checked").val();
+        var price = $("#price").text();
+        $(".index-model").show();
+    }
+
+
+</script>
+</body>
+</html>
